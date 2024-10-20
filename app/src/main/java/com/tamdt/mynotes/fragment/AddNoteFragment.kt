@@ -19,6 +19,9 @@ import com.tamdt.mynotes.databinding.FragmentAddNoteBinding
 import com.tamdt.mynotes.model.Note
 import com.tamdt.mynotes.viewmodel.NoteViewModel
 import kotlinx.coroutines.flow.flowOf
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class AddNoteFragment : Fragment(R.layout.fragment_add_note), MenuProvider {
     private var addNodeBinding: FragmentAddNoteBinding? = null
@@ -46,8 +49,10 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), MenuProvider {
     private fun saveNote(view: View){
         val noteTitle = binding.addNoteTitle.text.toString().trim()
         val noteDesc = binding.addNoteDesc.text.toString().trim()
+        val currentDate = SimpleDateFormat("dd,MM,yyyy", Locale.getDefault()).format(Date())
+
         if (noteTitle.isNotEmpty()){
-            val note = Note(0, noteTitle, noteDesc)
+            val note = Note(0, noteTitle, noteDesc, currentDate)
             notesViewModel.addNote(note)
 
             Toast.makeText(addNoteView.context, "Đã Lưu", Toast.LENGTH_SHORT).show()
