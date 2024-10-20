@@ -35,7 +35,6 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), MenuProvider {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         addNodeBinding = FragmentAddNoteBinding.inflate(inflater, container, false)
         return binding.root
     }

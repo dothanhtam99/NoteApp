@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.tamdt.mynotes.fragment.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="Notes" >
         <action
             android:id="@+id/action_homeFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
@@ -33,7 +33,7 @@
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="com.tamdt.mynotes.fragment.AddNoteFragment"
-        android:label="AddNoteFragment" >
+        android:label="Tạo ghi chú" >
         <action
             android:id="@+id/action_addNoteFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/editNoteFragment"
         android:name="com.tamdt.mynotes.fragment.EditNoteFragment"
-        android:label="EditNoteFragment" >
+        android:label="Chỉnh sửa" >
         <action
             android:id="@+id/action_editNoteFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -54,21 +54,21 @@
     <fragment
         android:id="@+id/calendarFragment"
         android:name="com.tamdt.mynotes.fragment.CalendarFragment"
-        android:label="fragment_calendar"
+        android:label="Lịch"
         tools:layout="@layout/fragment_calendar" />
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.tamdt.mynotes.fragment.SettingFragment"
-        android:label="fragment_setting"
+        android:label="Đánh giá"
         tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/shareFragment"
         android:name="com.tamdt.mynotes.fragment.ShareFragment"
-        android:label="fragment_share"
+        android:label="Chia sẻ"
         tools:layout="@layout/fragment_share" />
     <fragment
         android:id="@+id/taskNoteFragment"
         android:name="com.tamdt.mynotes.fragment.TaskNoteFragment"
-        android:label="fragment_task_note"
+        android:label="Công việc"
         tools:layout="@layout/fragment_task_note" />
 </navigation>

@@ -77,10 +77,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         }
     }
 
-    private fun searchNote(query: String?){
-        val searchQuery = "%$query"
-        notesViewModel.searchNote(searchQuery).observe(this) {list ->
+    private fun searchNote(query: String?) {
+        val searchQuery = "%$query%"
+        notesViewModel.searchNote(searchQuery).observe(viewLifecycleOwner) { list ->
             noteAdapter.differ.submitList(list)
+            updateUI(list)
         }
     }
 

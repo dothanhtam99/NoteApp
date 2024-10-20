@@ -4,6 +4,7 @@
     <item
         android:id="@+id/saveMenu"
         android:title="Save"
+        android:icon="@drawable/done"
         app:showAsAction="always"
         />
 </menu>

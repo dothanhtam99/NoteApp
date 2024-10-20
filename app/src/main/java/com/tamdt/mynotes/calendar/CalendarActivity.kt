@@ -99,7 +99,6 @@ class CalendarActivity : AppCompatActivity() {
             finish()
         }
     }
-
     private fun getCalendarFromDateString(dateString: String): Calendar? {
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         return try {
