@@ -64,6 +64,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
                 Toast.makeText(context, "Hãy nhập tiêu đề", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
     private fun deleteNote() {
         AlertDialog.Builder(requireContext()).apply {

@@ -27,7 +27,5 @@ import com.tamdt.mynotes.model.Note
             NoteDatabase::class.java,
             "note_db"
         ).build()
-
-
     }
 }

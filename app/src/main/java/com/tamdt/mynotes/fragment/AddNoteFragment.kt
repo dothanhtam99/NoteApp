@@ -50,7 +50,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), MenuProvider {
     private fun saveNote(view: View){
         val noteTitle = binding.addNoteTitle.text.toString().trim()
         val noteDesc = binding.addNoteDesc.text.toString().trim()
-        val currentDate = SimpleDateFormat("dd,MM,yyyy", Locale.getDefault()).format(Date())
+        val currentDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
 
         if (noteTitle.isNotEmpty()){
             val note = Note(0, noteTitle, noteDesc, currentDate)
