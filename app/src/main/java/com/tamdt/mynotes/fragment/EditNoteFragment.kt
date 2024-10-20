@@ -52,8 +52,13 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
             val noteDesc = binding.editNoteDesc.text.toString().trim()
 
             if (noteTile.isNotEmpty()){
-                val note = Note(currentNote.id, noteTile, noteDesc)
-                notesViewModel.updateNote(note)
+                val updatedNote = Note(
+                    currentNote.id,
+                    noteTile,
+                    noteDesc,
+                    currentNote.date
+                )
+                notesViewModel.updateNote(updatedNote)
                 view.findNavController().popBackStack(R.id.homeFragment, false)
             }else {
                 Toast.makeText(context, "Hãy nhập tiêu đề", Toast.LENGTH_SHORT).show()
@@ -62,14 +67,14 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
     }
     private fun deleteNote() {
         AlertDialog.Builder(requireContext()).apply {
-            setTitle("Delete note")
-            setMessage("Ban co muon xoa note")
-            setPositiveButton("delete"){_,_ ->
+            setTitle("Xóa ghi chú")
+            setMessage("Bạn có chắc chắn muốn xóa ghi chú này?")
+            setPositiveButton("Xóa") { _, _ ->
                 notesViewModel.deleteNote(currentNote)
-                Toast.makeText(context, "Da xoa", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Đã xóa ghi chú", Toast.LENGTH_SHORT).show()
                 view?.findNavController()?.popBackStack(R.id.homeFragment, false)
             }
-            setNegativeButton("Cancel", null)
+            setNegativeButton("Hủy", null)
         }.create().show()
     }
 
