@@ -2,6 +2,7 @@ package com.tamdt.mynotes
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -23,7 +24,6 @@ import com.tamdt.mynotes.constant.Constants
 import com.tamdt.mynotes.database.NoteDatabase
 import com.tamdt.mynotes.databinding.ActivityMainBinding
 import com.tamdt.mynotes.reponsitory.NoteRespository
-import com.tamdt.mynotes.setting.SettingActivity
 import com.tamdt.mynotes.viewmodel.NoteViewModel
 import com.tamdt.mynotes.viewmodel.NoteViewModelFactory
 
@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
-
     }
 
     private fun setupNavigation() {
@@ -115,12 +114,30 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 feedbackApp()
             }
 
-            R.id.nav_settings -> {
-                startActivity(Intent(this, SettingActivity::class.java))
+            R.id.nav_rate -> {
+                openPlayStoreForRating()
             }
         }
         drawerLayout.closeDrawers()
         return true
+    }
+
+    private fun openPlayStoreForRating() {
+        try {
+            val packageName: String = packageName
+            var intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
+                )
+                startActivity(intent)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun shareFriend() {
